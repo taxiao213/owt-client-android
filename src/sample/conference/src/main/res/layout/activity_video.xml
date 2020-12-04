@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fl"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/multi_func_btn_disconnect"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="@string/disconnect"
+            android:textColor="@android:color/background_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/multi_func_btn_sharescreen"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="@string/sharescreen"
+            android:textColor="@android:color/background_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/multi_func_btn_publish"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="@string/publish"
+            android:textColor="@android:color/background_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/multi_func_btn_subscribe"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="@string/subscribe"
+            android:textColor="@android:color/background_light"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/multi_func_btn_unsubscribe"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="unSubscribe"
+            android:textColor="@android:color/background_light"
+            android:textSize="15sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</LinearLayout>

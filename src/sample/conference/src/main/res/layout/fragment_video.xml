@@ -1,0 +1,139 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="owt.sample.conference.VideoFragment">
+
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right|center_vertical"
+        android:elevation="1dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/stats_in"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_weight="1"
+            android:background="@color/black_overlay"
+            android:gravity="top"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/stats_out"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_weight="1"
+            android:background="@color/black_overlay"
+            android:gravity="top"
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
+
+    <!--    <org.webrtc.SurfaceViewRenderer-->
+    <!--        android:id="@+id/full_renderer"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
+
+    <!--    <org.webrtc.SurfaceViewRenderer-->
+    <!--        android:id="@+id/small_renderer"-->
+    <!--        android:layout_width="160dp"-->
+    <!--        android:layout_height="120dp" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <org.webrtc.SurfaceViewRenderer
+                android:id="@+id/renderer0"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1" />
+
+            <org.webrtc.SurfaceViewRenderer
+                android:id="@+id/renderer1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1" />
+
+            <org.webrtc.SurfaceViewRenderer
+                android:id="@+id/renderer2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <org.webrtc.SurfaceViewRenderer
+                android:id="@+id/renderer3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1" />
+
+            <org.webrtc.SurfaceViewRenderer
+                android:id="@+id/renderer4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1" />
+
+            <org.webrtc.SurfaceViewRenderer
+                android:id="@+id/renderer5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <org.webrtc.SurfaceViewRenderer
+                android:id="@+id/renderer6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1" />
+
+            <org.webrtc.SurfaceViewRenderer
+                android:id="@+id/renderer7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1" />
+
+            <org.webrtc.SurfaceViewRenderer
+                android:id="@+id/renderer8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/multi_func_btn_connect"
+        style="?metaButtonBarButtonStyle"
+        android:layout_width="100dp"
+        android:layout_height="38dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="@string/connect"
+        android:textColor="@android:color/background_light"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/multi_func_btn_setting"
+        style="?metaButtonBarButtonStyle"
+        android:layout_width="100dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="50dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="@string/settings"
+        android:textColor="@android:color/background_light"
+        android:textSize="15sp" />
+</LinearLayout>

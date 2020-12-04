@@ -1,0 +1,25 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml:1:1-2:37
+INJECTED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml:1:1-2:37
+INJECTED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml:1:1-2:37
+	package
+		ADDED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml:2:11-35
+		INJECTED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml
+		INJECTED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml:1:11-69
+uses-sdk
+INJECTED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml
+INJECTED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml
+INJECTED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml
+INJECTED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml
+		ADDED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml
+		INJECTED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml
+		ADDED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml
+		INJECTED from C:\project\Android\owt-android-client\owt-android\owt-client-android\src\sdk\conference\src\main\AndroidManifest.xml
