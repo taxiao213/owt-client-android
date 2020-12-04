@@ -9,3 +9,6 @@
 /.gradle/
 /gradlew.bat
 /gradlew
+/src/sdk/conference/build
+/src/sdk/base/build
+/src/sdk/p2p/build
