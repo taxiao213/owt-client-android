@@ -1,9 +1,11 @@
 /src/sample/conference/build/
 /src/sample/p2p/build/
 /src/sdk/base/build/
-/src/sdk/conference/build/
 /src/sdk/p2p/build/
 /gradle/
 /.idea/
+/src/sample/utils/build/
+/src/sdk/conference/build/
+/.gradle/
 /gradlew.bat
 /gradlew

@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -83,10 +84,8 @@ import static owt.base.MediaCodecs.VideoCodec.VP9;
  * CSDN:http://blog.csdn.net/yin13753884368/article
  * Github:https://github.com/taxiao213
  */
-public class VideoActivity extends AppCompatActivity implements VideoFragment2.VideoFragmentListener,
-        ActivityCompat.OnRequestPermissionsResultCallback,
-        ConferenceClient.ConferenceClientObserver, View.OnClickListener {
-    private final String TAG = "OWT_CONF VideoActivity";
+public class VideoActivity extends AppCompatActivity implements VideoFragment2.VideoFragmentListener, ActivityCompat.OnRequestPermissionsResultCallback, ConferenceClient.ConferenceClientObserver, View.OnClickListener {
+    private final String TAG = "HEX_VideoActivity";
     private final int OWT_REQUEST_CODE = 100;
     private boolean contextHasInitialized = false;
     public EglBase rootEglBase;
@@ -114,6 +113,7 @@ public class VideoActivity extends AppCompatActivity implements VideoFragment2.V
     private String token;
     private ArrayList<SurfaceViewRenderer> rendererArrayList;
     private FragmentTransaction transaction;
+    public int currentRender = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -323,6 +323,9 @@ public class VideoActivity extends AppCompatActivity implements VideoFragment2.V
                 statsTimer = null;
             }
             publication.stop();
+            publication = null;
+            subscription.stop();
+            subscription = null;
             if (localStream != null) {
                 localStream.detach(localRenderer);
                 localStream.dispose();
@@ -333,9 +336,6 @@ public class VideoActivity extends AppCompatActivity implements VideoFragment2.V
                 capturer.dispose();
                 capturer = null;
             }
-
-            publication = null;
-            subscription = null;
             remoteStreamIdList.clear();
             remoteStreamMap.clear();
             videoCodecMap.clear();
@@ -453,31 +453,12 @@ public class VideoActivity extends AppCompatActivity implements VideoFragment2.V
     public void chooseCodec(RemoteStream remoteStream, int selectid) {
         List<String> videoCodecList = videoCodecMap.get(remoteStream.id());
         removeDuplicate(videoCodecList);
-        final String[] items = videoCodecList.toArray(new String[0]);
-
         String chooseVideoCodec = UIUtils.getInstance().getCodec();
         if (simulcastStreamMap.containsKey(remoteStream.id())) {
             chooseRid(remoteStream, chooseVideoCodec, selectid);
         } else {
             subscribeForward(remoteStream, chooseVideoCodec, null, selectid);
         }
-
-        /*AlertDialog.Builder singleChoiceDialog =
-                new AlertDialog.Builder(VideoActivity.this);
-        singleChoiceDialog.setTitle("VideoCodec List");
-        singleChoiceDialog.setSingleChoiceItems(items, 0,
-                (dialog, which) -> subscribeVideoCodecChoice = which);
-        singleChoiceDialog.setPositiveButton("ok",
-                (dialog, which) -> {
-                    String chooseVideoCodec = items[subscribeVideoCodecChoice];
-                    if (simulcastStreamMap.containsKey(remoteStream.id())) {
-                        chooseRid(remoteStream, chooseVideoCodec, selectid);
-                    } else {
-                        subscribeForward(remoteStream, chooseVideoCodec, null, selectid);
-                    }
-
-                });
-        singleChoiceDialog.show();*/
     }
 
     public void subscribeForward(RemoteStream remoteStream, String videoCodec, String rid, int selectid) {
@@ -485,24 +466,13 @@ public class VideoActivity extends AppCompatActivity implements VideoFragment2.V
             @Override
             public void action(Point var) {
                 if (var != null) {
-
                     SubscribeOptions.VideoSubscriptionConstraints.Builder videoOptionBuilder = SubscribeOptions.VideoSubscriptionConstraints.builder();
                     VideoCodecParameters vcp = new VideoCodecParameters(MediaCodecs.VideoCodec.get(UIUtils.getInstance().getCodec()));
-//                    if (videoCodec.equals("VP8")) {
-//                        vcp = new VideoCodecParameters(VP8);
-//                    } else if (videoCodec.equals("H264")) {
-//                        vcp = new VideoCodecParameters(H264);
-//                    } else if (videoCodec.equals("VP9")) {
-//                        vcp = new VideoCodecParameters(VP9);
-//                    } else if (videoCodec.equals("H265")) {
-//                        vcp = new VideoCodecParameters(H265);
-//                    }
                     if (rid != null) {
                         videoOptionBuilder.setRid(rid);
                     }
                     SubscribeOptions.VideoSubscriptionConstraints videoOption = videoOptionBuilder
                             .addCodec(vcp)
-                            // TODO: 2020/11/19
                             .setResolution(var.x, var.y)
                             .build();
 
@@ -523,23 +493,25 @@ public class VideoActivity extends AppCompatActivity implements VideoFragment2.V
                                 public void onSuccess(Subscription result) {
                                     VideoActivity.this.subscription = result;
                                     VideoActivity.this.remoteForwardStream = remoteStream;
-                                    if (selectid >= (remoteStreamIdList.size())) {
-                                        remoteStream.attach(rendererArrayList.get(rendererArrayList.size()));
-                                    } else {
-                                        remoteStream.attach(rendererArrayList.get(selectid + 1));
-                                    }
-//                        remoteStream.attach(remoteRenderer);
-                       /* runOnUiThread(() -> {
-                            subscribeBtn.setVisibility(View.GONE);
-                            unSubscribeBtn.setVisibility(View.VISIBLE);
-                        });*/
+//                                    if (selectid >= (remoteStreamIdList.size())) {
+//                                        remoteStream.attach(rendererArrayList.get(rendererArrayList.size()));
+//                                    } else {
+//                                        remoteStream.attach(rendererArrayList.get(selectid + 1));
+//                                    }
 
+                                    if (currentRender < 1) {
+                                        currentRender = 1;
+                                    } else if (currentRender == rendererArrayList.size()) {
+                                        currentRender = rendererArrayList.size() - 1;
+                                    }
+                                    remoteStream.attach(rendererArrayList.get(currentRender));
+                                    currentRender = currentRender + 1;
                                 }
 
                                 @Override
                                 public void onFailure(OwtError error) {
-                                    Log.e(TAG, "Failed to subscribe "
-                                            + error.errorMessage);
+                                    Log.e(TAG, "Failed to subscribe " + error.errorMessage);
+                                    ToastUtils.show("Failed to subscribe " + error.errorMessage);
                                 }
                             });
                 }

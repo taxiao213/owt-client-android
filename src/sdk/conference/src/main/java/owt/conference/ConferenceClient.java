@@ -358,11 +358,11 @@ public final class ConferenceClient implements SignalingChannel.SignalingChannel
             sendSignalingMessage("subscribe", subscribeMsg, args -> {
                 if (extractMsg(0, args).equals("ok")) {
                     for (ConferencePeerConnectionChannel pcChannel : pcChannels.values()) {
-                        if (pcChannel.stream.id().equals(remoteStream.id())) {
-                            triggerCallback(callback,
-                                    new OwtError("Remote stream has been subscribed."));
-                            return;
-                        }
+//                        if (pcChannel.stream.id().equals(remoteStream.id())) {
+////                            triggerCallback(callback,
+////                                    new OwtError("Remote stream has been subscribed."));
+////                            return;
+////                        }
                     }
                     JSONObject result = (JSONObject) args[1];
                     try {
@@ -892,7 +892,9 @@ public final class ConferenceClient implements SignalingChannel.SignalingChannel
                 if (pcChannel.publication != null) {
                     pcChannel.publication.onError(error);
                 } else {
-                    pcChannel.subscription.onError(error);
+                    if (pcChannel.subscription != null) {
+                        pcChannel.subscription.onError(error);
+                    }
                 }
             }
         }
